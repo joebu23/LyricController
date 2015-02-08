@@ -16,12 +16,12 @@ namespace LyricController
 
         public TimeSpan gameTimer { get; set; }
 
-        public clockControl()
+        public clockControl(string NewMinutes, string NewSeconds)
         {
-            this.Minutes = 20;
-            this.Seconds = 00;
-            this.strMinutes = "20";
-            this.strSeconds = "00";
+            this.Minutes = Convert.ToInt32(NewMinutes);
+            this.Seconds = Convert.ToInt32(NewSeconds);
+            this.strMinutes = NewMinutes;
+            this.strSeconds = NewSeconds;
             this.gameTimer = new TimeSpan(0, Minutes, Seconds);
         }
 
@@ -44,7 +44,9 @@ namespace LyricController
             TimeSpan span = new TimeSpan(0,0,1);
             gameTimer = gameTimer.Subtract(span);
             Minutes = gameTimer.Minutes;
+            strMinutes = gameTimer.Minutes.ToString();
             Seconds = gameTimer.Seconds;
+            strSeconds = gameTimer.Seconds.ToString();
         }
 
         public void updateClock(int change)
@@ -52,7 +54,9 @@ namespace LyricController
             TimeSpan span = new TimeSpan(0,0,change);
             gameTimer = gameTimer.Add(span);
             Minutes = gameTimer.Minutes;
+            strMinutes = gameTimer.Minutes.ToString();
             Seconds = gameTimer.Seconds;
+            strSeconds = gameTimer.Seconds.ToString();
         }
 
     }

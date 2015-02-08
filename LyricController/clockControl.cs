@@ -16,12 +16,12 @@ namespace LyricController
 
         public TimeSpan gameTimer { get; set; }
 
-        public clockControl(string NewMinutes, string NewSeconds)
+        public clockControl()
         {
-            this.Minutes = Convert.ToInt32(NewMinutes);
-            this.Seconds = Convert.ToInt32(NewSeconds);
-            this.strMinutes = NewMinutes;
-            this.strSeconds = NewSeconds;
+            this.Minutes = 20;
+            this.Seconds = 00;
+            this.strMinutes = "20";
+            this.strSeconds = "00";
             this.gameTimer = new TimeSpan(0, Minutes, Seconds);
         }
 
@@ -37,6 +37,15 @@ namespace LyricController
         public void clockInputChanged()
         {
             gameTimer = new TimeSpan(0, Minutes, Seconds);
+            strMinutes = Minutes.ToString();
+            if (gameTimer.Seconds < 10)
+            {
+                strSeconds = "0" + gameTimer.Seconds.ToString();
+            }
+            else
+            {
+                strSeconds = gameTimer.Seconds.ToString();
+            }
         }
 
         public void clockTick()
@@ -46,7 +55,14 @@ namespace LyricController
             Minutes = gameTimer.Minutes;
             strMinutes = gameTimer.Minutes.ToString();
             Seconds = gameTimer.Seconds;
-            strSeconds = gameTimer.Seconds.ToString();
+            if (gameTimer.Seconds < 10)
+            {
+                strSeconds = "0" + gameTimer.Seconds.ToString();
+            }
+            else
+            {
+                strSeconds = gameTimer.Seconds.ToString();
+            }
         }
 
         public void updateClock(int change)
@@ -56,7 +72,15 @@ namespace LyricController
             Minutes = gameTimer.Minutes;
             strMinutes = gameTimer.Minutes.ToString();
             Seconds = gameTimer.Seconds;
-            strSeconds = gameTimer.Seconds.ToString();
+            if (Seconds < 10)
+            {
+                strSeconds = "0" + gameTimer.Seconds.ToString();
+            }
+            else
+            {
+                strSeconds = gameTimer.Seconds.ToString();
+            }
+            
         }
 
     }

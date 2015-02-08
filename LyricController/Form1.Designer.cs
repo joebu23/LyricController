@@ -32,21 +32,22 @@
             this.button1 = new System.Windows.Forms.Button();
             this.clockStartStop = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.clockDown = new System.Windows.Forms.Button();
+            this.clockUp = new System.Windows.Forms.Button();
             this.clockTiming = new System.Windows.Forms.Label();
             this.clockAdjustBar = new System.Windows.Forms.HScrollBar();
             this.adjustClockShow = new System.Windows.Forms.Button();
             this.clockSeconds = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.clockMinutes = new System.Windows.Forms.TextBox();
-            this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.clockUp = new System.Windows.Forms.Button();
-            this.clockDown = new System.Windows.Forms.Button();
+            this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(642, 380);
+            this.button1.Location = new System.Drawing.Point(217, 133);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -81,6 +82,28 @@
             this.groupBox1.Size = new System.Drawing.Size(229, 114);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // clockDown
+            // 
+            this.clockDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockDown.Location = new System.Drawing.Point(203, 31);
+            this.clockDown.Name = "clockDown";
+            this.clockDown.Size = new System.Drawing.Size(18, 15);
+            this.clockDown.TabIndex = 9;
+            this.clockDown.Text = "-";
+            this.clockDown.UseVisualStyleBackColor = true;
+            this.clockDown.Click += new System.EventHandler(this.clockDown_Click);
+            // 
+            // clockUp
+            // 
+            this.clockUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockUp.Location = new System.Drawing.Point(203, 10);
+            this.clockUp.Name = "clockUp";
+            this.clockUp.Size = new System.Drawing.Size(18, 15);
+            this.clockUp.TabIndex = 8;
+            this.clockUp.Text = "+";
+            this.clockUp.UseVisualStyleBackColor = true;
+            this.clockUp.Click += new System.EventHandler(this.clockUp_Click);
             // 
             // clockTiming
             // 
@@ -123,6 +146,7 @@
             this.clockSeconds.Size = new System.Drawing.Size(40, 31);
             this.clockSeconds.TabIndex = 4;
             this.clockSeconds.Text = "99";
+            this.clockSeconds.TextChanged += new System.EventHandler(this.clockSeconds_TextChanged);
             // 
             // label1
             // 
@@ -143,39 +167,17 @@
             this.clockMinutes.TabIndex = 2;
             this.clockMinutes.Text = "99";
             this.clockMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.clockMinutes.TextChanged += new System.EventHandler(this.clockMinutes_TextChanged);
             // 
-            // gameTimer
+            // mainTimer
             // 
-            this.gameTimer.Interval = 1000;
-            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
-            // 
-            // clockUp
-            // 
-            this.clockUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockUp.Location = new System.Drawing.Point(203, 10);
-            this.clockUp.Name = "clockUp";
-            this.clockUp.Size = new System.Drawing.Size(18, 15);
-            this.clockUp.TabIndex = 8;
-            this.clockUp.Text = "+";
-            this.clockUp.UseVisualStyleBackColor = true;
-            this.clockUp.Click += new System.EventHandler(this.clockUp_Click);
-            // 
-            // clockDown
-            // 
-            this.clockDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockDown.Location = new System.Drawing.Point(203, 31);
-            this.clockDown.Name = "clockDown";
-            this.clockDown.Size = new System.Drawing.Size(18, 15);
-            this.clockDown.TabIndex = 9;
-            this.clockDown.Text = "-";
-            this.clockDown.UseVisualStyleBackColor = true;
-            this.clockDown.Click += new System.EventHandler(this.clockDown_Click);
+            this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 415);
+            this.ClientSize = new System.Drawing.Size(759, 229);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -195,11 +197,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox clockMinutes;
         private System.Windows.Forms.Button adjustClockShow;
-        private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label clockTiming;
         private System.Windows.Forms.HScrollBar clockAdjustBar;
         private System.Windows.Forms.Button clockDown;
         private System.Windows.Forms.Button clockUp;
+        private System.Windows.Forms.Timer mainTimer;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -67,6 +67,7 @@ namespace LyricController
 
         public void updateClock(int change)
         {
+            // added comment to test git hub updating
             TimeSpan span = new TimeSpan(0,0,change);
             gameTimer = gameTimer.Add(span);
             Minutes = gameTimer.Minutes;

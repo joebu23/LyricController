@@ -13,7 +13,7 @@ namespace LyricController
 {
     public partial class Form1 : Form
     {
-        TelnetConnection Lyric = new TelnetConnection("127.0.0.1", 23);
+        //TelnetConnection Lyric = new TelnetConnection("127.0.0.1", 23);
         
         clockControl gameClock = new clockControl();        
 
@@ -25,31 +25,6 @@ namespace LyricController
             clockTiming.Text = "1000 milliseconds";
             updateClockForm();
             
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ////Lyric.Login("joe", "royston5051", 10000);
-            //Console.Write(Lyric.Read());
-
-            //Lyric.WriteLine("joe");
-            ////MessageBox.Show("hi");
-            ////Console.Write("hi");
-            ////while (tc.IsConnected && prompt.Trim() != "exit")
-            ////{
-            ////    // display server output
-            //Console.Write(Lyric.Read());
-
-            //Lyric.WriteLine("dir");
-            //Console.Write(Lyric.Read());
-
-            ////    // send client input to server
-            ////    prompt = Console.ReadLine();
-            ////    tc.WriteLine(prompt);
-
-            ////    // display server output
-            ////    Console.Write(tc.Read());
-            ////}
         }
 
         #region Clock Functions
@@ -98,8 +73,8 @@ namespace LyricController
                 mainTimer.Enabled = false;
                 clockStartStop.Text = "Start";
             }
-            clockMinutes.Text = gameClock.strMinutes;
-            clockSeconds.Text = gameClock.strSeconds;
+            clockMinutes.Text = gameClock.Minutes > 9 ? clockMinutes.Text = gameClock.Minutes.ToString("D2").TrimStart('0') : gameClock.Minutes.ToString("D0").TrimStart('0');
+            clockSeconds.Text = gameClock.Seconds.ToString("D2");
         }
 
         private void clockMinutes_TextChanged(object sender, EventArgs e)
@@ -108,8 +83,11 @@ namespace LyricController
             {
                 try
                 {
-                    gameClock.Minutes = Convert.ToInt32(clockMinutes.Text);
-                    gameClock.clockInputChanged();
+                    if (!String.IsNullOrEmpty(clockMinutes.Text))
+                    {
+                        gameClock.Minutes = Convert.ToInt32(clockMinutes.Text);
+                        gameClock.clockInputChanged();
+                    }
                 }
                 catch
                 {

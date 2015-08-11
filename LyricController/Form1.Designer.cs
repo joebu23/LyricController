@@ -135,7 +135,7 @@
             this.clockSeconds.Size = new System.Drawing.Size(40, 31);
             this.clockSeconds.TabIndex = 4;
             this.clockSeconds.Text = "99";
-            this.clockSeconds.TextChanged += new System.EventHandler(this.clockSeconds_TextChanged);
+            this.clockSeconds.KeyUp += new System.Windows.Forms.KeyEventHandler(this.clockSeconds_KeyUp);
             // 
             // label1
             // 
@@ -156,7 +156,7 @@
             this.clockMinutes.TabIndex = 2;
             this.clockMinutes.Text = "99";
             this.clockMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.clockMinutes.TextChanged += new System.EventHandler(this.clockMinutes_TextChanged);
+            this.clockMinutes.KeyUp += new System.Windows.Forms.KeyEventHandler(this.clockMinutes_KeyUp);
             // 
             // mainTimer
             // 

@@ -77,7 +77,7 @@ namespace LyricController
             clockSeconds.Text = gameClock.Seconds.ToString("D2");
         }
 
-        private void clockMinutes_TextChanged(object sender, EventArgs e)
+        private void clockMinutes_KeyUp(object sender, EventArgs e)
         {
             if (!mainTimer.Enabled)
             {
@@ -96,7 +96,7 @@ namespace LyricController
             }
         }
 
-        private void clockSeconds_TextChanged(object sender, EventArgs e)
+        private void clockSeconds_KeyUp(object sender, EventArgs e)
         {
             if (!mainTimer.Enabled)
             {
